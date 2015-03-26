@@ -1,0 +1,52 @@
+class EqualOverride{
+
+int number;
+String name;
+
+public String getName(){
+return name;
+}
+
+public void setName(String name){
+this.name = name;
+}
+
+public int getNumber(){
+return number;
+}
+
+public void setNumber(int number){
+this.number = number;
+}
+
+//This method overrides the equal mehtod.
+//public boolean equal(Object obj){
+public boolean equal(Object obj){
+if (this == obj)
+return true;
+
+if (obj == null)
+return false;
+
+if(getClass() != obj.getClass())
+return false;
+
+EqualOverride equOver = (EqualOverride) obj;
+if(name == null){
+    if(equOver.name != null)
+    return false;
+} else if(! name.equals(equOver.name)){
+        return false;
+}
+return true;
+}
+
+public static void main (String a[]){
+EqualOverride e1 = new EqualOverride();
+e1.setName("100");
+EqualOverride e2 = new EqualOverride();
+e2.setName("100");
+System.out.println("Mahesh  --->"+e1.equals(e2));
+//System.out.println("Mahesh  --->"+e1.equal(e2));
+}
+}
